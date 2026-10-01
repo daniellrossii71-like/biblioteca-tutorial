@@ -70,6 +70,17 @@ comTitulo(titulo: string): Livro {
   );
 }
 
+comIsbn(isbn: Isbn): Livro {
+  return new Livro(
+    this.id,
+    this.numeroRegistro,
+    isbn,
+    this.titulo,
+    this.autorId,
+    this.dataCatalogacao,
+  );
+}
+
 
 
   /** O que conta como "a mesma obra" é decisão do negócio, não do SQL. */

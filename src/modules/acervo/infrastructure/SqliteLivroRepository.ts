@@ -83,17 +83,20 @@ updateTitulo(livro: Livro): void {
   ]);
 }
 
-
-
-  findById(id: LivroId): Livro | null {
-    return this.items.find((livro) => livro.id?.equals(id)) ?? null;   // 8 edição...
-  }
-
-  updateTitulo(livro: Livro): void {
-    this.items = this.items.map((atual) =>
-      atual.id?.equals(livro.id!) ? livro : atual,
-  );
+findById(id: LivroId): Livro | null {
+  const row = db.query("SELECT * FROM livros WHERE id = ?")
+    .get(id.value) as LivroRow | null;
+  return row === null ? null : toLivro(row);
 }
+
+updateIsbn(livro: Livro): void {
+  db.run("UPDATE livros SET isbn = ? WHERE id = ?", [
+    livro.isbn.value,
+    livro.id!.value,
+  ]);
+}
+ 
+
 
   findByAutorId(autorId: AutorId): Livro[] {
     const rows = db

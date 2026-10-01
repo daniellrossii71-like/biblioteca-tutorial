@@ -20,4 +20,7 @@ export interface LivroRepository {
 
   findById(id: LivroId): Livro | null;          // 2 edição ...
   updateTitulo(livro: Livro): void;
+
+  findById(id: LivroId): Livro | null;
+  updateIsbn(livro: Livro): void;
 }

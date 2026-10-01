@@ -1,3 +1,6 @@
+import { getBodyAsObject, getFieldAsPositiveInt, getFieldAsText } from "../../../../shared/validation";
+
+
 export type CorrecaoDeTitulo = {
   id: number;
   titulo: string;
